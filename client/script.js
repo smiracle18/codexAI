@@ -84,7 +84,8 @@ const handleSubmit = async (e) => {
 
   loader(messageDiv);
 
-  const response = await fetch('https://codex-ai-6gb7.onrender.com/',{
+  const response = await fetch('https://codex-ai-6gb7.onrender.com/',
+{
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
@@ -113,7 +114,7 @@ const handleSubmit = async (e) => {
 }
 
 
-form.addEventListener('sumbit', handleSubmit);
+form.addEventListener('submit', handleSubmit);
 form.addEventListener('keyup', (e) => {
   if(e.keyCode === 13){
     handleSubmit(e);
