@@ -118,7 +118,7 @@ const handleSubmit = async (e) => {
 
 
     // Fetching image
-    const response = await fetch('http://localhost:5000/draw',
+    const response = await fetch('https://codex-ai-6gb7.onrender.com/draw',
       {
         method: 'POST',
         headers: {
