@@ -53,15 +53,14 @@ app.post('/draw', async (req, res) => {
     try {
         const prompt = req.body.prompt;
         const size = req.body.size || '256x256';
-        // const response = await openai.createImage({
-        //     prompt: `${prompt}`,
-        //     n: 1,
-        //     size: `${size}`,
-        //   });
+        const response = await openai.createImage({
+            prompt: `${prompt}`,
+            n: 1,
+            size: `${size}`,
+          });
 
         res.status(200).send({
-            image_url: "https://oaidalleapiprodscus.blob.core.windows.net/private/org-oO6pGXKOfK1KY1y05t9k1JbQ/user-2LdMABpWXfsrTpZx7frpRrof/img-DTCjogL816Yda0F8kuO0pDNW.png?st=2022-12-26T16%3A27%3A13Z&se=2022-12-26T18%3A27%3A13Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2022-12-26T10%3A20%3A00Z&ske=2022-12-27T10%3A20%3A00Z&sks=b&skv=2021-08-06&sig=oVMsSx2UPrGzFQVi10eOtkLGtmg5BpZQ4S0viE2L/cA%3D"
-            // response.data.data[0].url
+            image_url: response.data.data[0].url
         });
 
     } catch (error) {
