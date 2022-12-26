@@ -119,6 +119,7 @@ form {
   margin: 0 auto;
   padding: 10px;
   background: #40414F;
+  border-radius: 20px;
 
   display: flex;
   flex-direction: row;
