@@ -25,7 +25,7 @@ function typeText(element, text){
   let index = 0;
   let interval = setInterval(() => {
     if (index < text.length){
-      element.innerHTML += text.chartAt(index);
+      element.innerHTML += text.charAt(index);
       index += 1;
     } else {
       clearInterval(interval);
@@ -46,8 +46,7 @@ function generateUniqueId() {
 
 function chatStripe (isAi, value, uniqueId) {
   return (
-    `
-      <div class="wrapper ${isAi && 'ai'}">
+    `<div class="wrapper ${isAi && 'ai'}">
         <div class="chat">
           <div class="profile">
           <img
@@ -71,7 +70,7 @@ const handleSubmit = async (e) => {
   const data = new FormData(form);
 
   // user's chat stripe
-  chatContainer.innerHTML += chatStripe(false, data.get('prompt'), 1);
+  chatContainer.innerHTML += chatStripe(false, data.get('prompt'));
   form.reset();
   
 
@@ -84,6 +83,31 @@ const handleSubmit = async (e) => {
   const messageDiv = document.getElementById(uniqueId);
 
   loader(messageDiv);
+
+  const response = await fetch('http://localhost:5000/',{
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      prompt: data.get('prompt')
+    })
+  })
+  
+  clearInterval(loadInterval);
+  messageDiv.innerHTML = '';
+  if (response.ok){
+    const data = await response.json();
+    
+    const parsedData = data.bot.trim();
+    console.log(data);
+    typeText(messageDiv, parsedData);
+  } else {
+    const err = await response.text();
+    messageDiv.innerHTML = "Something went wrong";
+    alert(err);
+  }
+
 
 
 }
