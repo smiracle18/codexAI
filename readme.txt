@@ -1,8 +1,5 @@
-Vite - 
+Codex - is an advanced AI chat bot that gives you code blocks and Software development ideas.
 
-node.js
-plane - css
-js - vannila 
-markdown
-prism - code highlighting
-api handling
+
+Please checkout live web version on : https://codex-ai-three.vercel.app/
+
