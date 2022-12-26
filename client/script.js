@@ -50,7 +50,7 @@ function chatStripe (isAi, value, uniqueId) {
         <div class="chat">
           <div class="profile">
           <img
-            src="${isAi ? bot:user}"
+            src="${isAi ? bot: user}"
             alt="${isAi ? 'bot': 'user'}"
             />
           </div>
@@ -70,7 +70,7 @@ const handleSubmit = async (e) => {
   const data = new FormData(form);
 
   // user's chat stripe
-  chatContainer.innerHTML += chatStripe(false, data.get('prompt'));
+  chatContainer.innerHTML += chatStripe(false, data.get('prompt'), 'uuid');
   form.reset();
   
 
